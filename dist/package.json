@@ -1,0 +1,43 @@
+{
+  "name": "Shared",
+  "version": "0.0.1",
+  "author": "Ionic Framework",
+  "homepage": "https://ionicframework.com/",
+  "private": true,
+  "dependencies": {
+    "@angular/common": "~13.2.2",
+    "@angular/core": "~13.2.2",
+    "@angular/fire": "^7.3.0",
+    "@angular/forms": "~13.2.2",
+    "@angular/platform-browser": "~13.2.2",
+    "@angular/platform-browser-dynamic": "~13.2.2",
+    "@angular/router": "~13.2.2",
+    "@ionic/angular": "^6.0.0",
+    "@ionic/lab": "^3.2.12",
+    "firebase": "^9.8.1",
+    "rxjs": "~6.6.0",
+    "tslib": "^2.2.0",
+    "zone.js": "~0.11.4"
+  },
+  "description": "An Ionic project",
+  "module": "fesm2015/Shared.mjs",
+  "es2020": "fesm2020/Shared.mjs",
+  "esm2020": "esm2020/Shared.mjs",
+  "fesm2020": "fesm2020/Shared.mjs",
+  "fesm2015": "fesm2015/Shared.mjs",
+  "typings": "Shared.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./Shared.d.ts",
+      "esm2020": "./esm2020/Shared.mjs",
+      "es2020": "./fesm2020/Shared.mjs",
+      "es2015": "./fesm2015/Shared.mjs",
+      "node": "./fesm2015/Shared.mjs",
+      "default": "./fesm2020/Shared.mjs"
+    }
+  },
+  "sideEffects": false
+}

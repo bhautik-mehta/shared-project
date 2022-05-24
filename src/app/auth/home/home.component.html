@@ -1,0 +1,13 @@
+<ion-content class="auth-form">
+  <ion-grid>
+    <ion-row>
+      <ion-col align-self-center>
+        <ion-button [mode]="mode" expand="block" color="primary" (click)="onButtonClick(0)">Register</ion-button>
+        <br />
+        <ui-span [mode]="mode" class="already">or Already a user?</ui-span>
+        <br />
+        <ion-button [mode]="mode" expand="block" color="danger" (click)="onButtonClick(1)">Sign In</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
