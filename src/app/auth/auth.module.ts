@@ -14,12 +14,12 @@ import { AuthService } from './core/_services/auth.services';
 import { HomeComponent } from './home/home.component';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDpjjXW9HEm_3R1AIPmd5xwgYDjYpPlrBM",
-  authDomain: "ionicfirebaseauth-ea911.firebaseapp.com",
-  projectId: "ionicfirebaseauth-ea911",
-  storageBucket: "ionicfirebaseauth-ea911.appspot.com",
-  messagingSenderId: "959549815952",
-  appId: "1:959549815952:web:5ba6f1e4e898bc044bac15"
+  apiKey: "AIzaSyDNqdAUFs5fU6VGgBmNuQfQKSpO34ICj8g",
+  authDomain: "multi-auth-login.firebaseapp.com",
+  projectId: "multi-auth-login",
+  storageBucket: "multi-auth-login.appspot.com",
+  messagingSenderId: "538888425984",
+  appId: "1:538888425984:web:cef0cd6ba7b28ff6777ee5"
 }
 
 @NgModule({
