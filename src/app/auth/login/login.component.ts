@@ -30,14 +30,14 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   setDefaultData() {
     this.isFormSubmit = false;
     this.loginForm = this.FB.group({
-      email: [ '', [
+      email: ['', [
         Validators.required,
-        Validators.pattern(this.emailValidation) 
+        Validators.pattern(this.emailValidation)
       ]],
       password: ['', [
         Validators.required,
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
   }
 
   setEmitData(data, type) {
-    switch(type.toString().toLowerCase()) {
+    switch (type.toString().toLowerCase()) {
       case 'email':
         this.f.email.setValue(data);
         break;
