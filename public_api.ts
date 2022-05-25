@@ -2,6 +2,7 @@ export * from './src/app/auth/auth.module'
 export * from './src/app/auth/login/login.component'
 export * from './src/app/auth/signup/signup.component'
 export * from './src/app/auth/home/home.component'
+export * from './src/app/auth/camera/camera.component'
 
 export * from './src/app/ui-shared/ui-shared.module'
 export * from './src/app/ui-shared/checkbox/checkbox.component'
