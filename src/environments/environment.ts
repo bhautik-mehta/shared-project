@@ -6,14 +6,14 @@ export const environment = {
   production: false,
   // emailValidation: "^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
   // passwordValidation: "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$",
-  // firebaseConfig: {
-  //   apiKey: "AIzaSyDpjjXW9HEm_3R1AIPmd5xwgYDjYpPlrBM",
-  //   authDomain: "ionicfirebaseauth-ea911.firebaseapp.com",
-  //   projectId: "ionicfirebaseauth-ea911",
-  //   storageBucket: "ionicfirebaseauth-ea911.appspot.com",
-  //   messagingSenderId: "959549815952",
-  //   appId: "1:959549815952:web:5ba6f1e4e898bc044bac15"
-  // }
+  firebaseConfig: {
+    apiKey: "AIzaSyCReG0gdJuamOJeX0yv-Kxn2Pf-08MaBz0",
+    authDomain: "ionic-project-7efec.firebaseapp.com",
+    projectId: "ionic-project-7efec",
+    storageBucket: "ionic-project-7efec.appspot.com",
+    messagingSenderId: "939844814718",
+    appId: "1:939844814718:web:86ae412c365c873832952f"
+  }
 };
 
 /*
