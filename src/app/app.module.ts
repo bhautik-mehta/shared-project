@@ -8,18 +8,26 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { UiSharedModule } from './ui-shared/ui-shared.module';
 import { SharedAuthModule } from './auth/auth.module';
-
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { getStorage, provideStorage } from '@angular/fire/storage';
 @NgModule({
   declarations: [
     AppComponent
   ],
   entryComponents: [],
   imports: [
-    BrowserModule, 
-    IonicModule.forRoot(), 
-    AppRoutingModule, 
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
     UiSharedModule,
-    SharedAuthModule
+    SharedAuthModule,
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage())
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
@@ -28,4 +36,4 @@ import { SharedAuthModule } from './auth/auth.module';
     AppComponent
   ],
 })
-export class AppModule {}
+export class AppModule { }

@@ -1,5 +1,31 @@
-<ion-content>
-  <p>
-    this is camera works! and this is camera compenent
-  </p>
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button expand="full" type="button" (click)="logout()">
+        <ion-icon name="exit"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      My profile
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-content class="ion-padding">
+    <div class="preview">
+      <ion-avatar (click)="changeImage()">
+        <script>
+          console.log("profile.imageUrl", profile);
+        </script>
+        <img [src]="imageUrl" />
+
+         <ng-template #placheholder_avatar>
+           <div class="fallback">
+             <p>Select avatar</p>
+           </div>
+        </ng-template>
+      </ion-avatar>
+    </div>
+   </ion-content>
 </ion-content>
