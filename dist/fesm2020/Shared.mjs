@@ -562,10 +562,10 @@ class CameraComponent {
     ngOnInit() { }
 }
 CameraComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.2.7", ngImport: i0, type: CameraComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
-CameraComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.2.7", type: CameraComponent, selector: "shared-camera", ngImport: i0, template: "<ion-content>\n  <p>\n    this is camera works! and this is camera compenent\n  </p>\n</ion-content>\n", styles: [""], components: [{ type: i1$1.IonContent, selector: "ion-content", inputs: ["color", "forceOverscroll", "fullscreen", "scrollEvents", "scrollX", "scrollY"] }] });
+CameraComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.2.7", type: CameraComponent, selector: "shared-camera", ngImport: i0, template: "<ion-content>\r\n  <p>\r\n    this is camera works! and this is camera compenent\r\n  </p>\r\n</ion-content>\r\n", styles: [""], components: [{ type: i1$1.IonContent, selector: "ion-content", inputs: ["color", "forceOverscroll", "fullscreen", "scrollEvents", "scrollX", "scrollY"] }] });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.7", ngImport: i0, type: CameraComponent, decorators: [{
             type: Component,
-            args: [{ selector: 'shared-camera', template: "<ion-content>\n  <p>\n    this is camera works! and this is camera compenent\n  </p>\n</ion-content>\n", styles: [""] }]
+            args: [{ selector: 'shared-camera', template: "<ion-content>\r\n  <p>\r\n    this is camera works! and this is camera compenent\r\n  </p>\r\n</ion-content>\r\n", styles: [""] }]
         }], ctorParameters: function () { return []; } });
 
 const firebaseConfig = {
