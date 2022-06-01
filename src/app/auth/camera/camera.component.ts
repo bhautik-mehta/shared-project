@@ -22,12 +22,17 @@ export class CameraComponent implements OnInit {
     private alertController: AlertController,
     private router: Router
   ) {
-    this.authService.getUserProfile().subscribe((data: null) => {
-      data = this.profile
+    this.authService.getUserProfile().then((data: null) => {
+      this.profile = data
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.authService.getUserProfile().then((data: null) => {
+      this.profile = data
+      console.log(data, this.profile, 'imagesssssssss')
+    });
+  }
   async changeImage() {
     const image = await Camera.getPhoto({
       quality: 90,

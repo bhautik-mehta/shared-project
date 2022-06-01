@@ -40,6 +40,8 @@ export class AuthService {
   }
   async uploadImage(cameraFile: Photo) {
     const user = await this.ngFireAuth.currentUser;
+    console.log(user, 'user-------');
+
     const path = `uploads/${user.uid}/profile. png`;
     const storageRef = ref(this.storage, path);
     try {
