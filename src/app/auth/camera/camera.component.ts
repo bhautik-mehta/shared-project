@@ -22,9 +22,9 @@ export class CameraComponent implements OnInit {
     private alertController: AlertController,
     private router: Router
   ) {
-    this.authService.getUserProfile().subscribe((data: null) => {
-      data = this.profile
-    });
+    // this.authService.getUserProfile().subscribe((data: null) => {
+    //   data = this.profile
+    // });
   }
 
   ngOnInit() { }
