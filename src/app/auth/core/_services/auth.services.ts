@@ -7,9 +7,8 @@ import { Observable } from "rxjs";
 
 @Injectable()
 export class AuthService {
-
   userData: any;
-
+  userId: any;
   constructor(
     private ngFireAuth: AngularFireAuth,
     private firestore: AngularFirestore,
