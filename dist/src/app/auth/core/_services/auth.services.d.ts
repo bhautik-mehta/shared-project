@@ -8,6 +8,7 @@ export declare class AuthService {
     private firestore;
     private storage;
     userData: any;
+    userId: any;
     constructor(ngFireAuth: AngularFireAuth, firestore: AngularFirestore, storage: AngularFireStorage);
     SignUp(email: string, password: string): Promise<import("firebase/compat").default.auth.UserCredential>;
     SignIn(email: string, password: string): Promise<import("firebase/compat").default.auth.UserCredential>;

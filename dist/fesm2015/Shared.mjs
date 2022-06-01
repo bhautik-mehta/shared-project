@@ -67,6 +67,7 @@ class AuthService {
     uploadImage(cameraFile) {
         return __awaiter(this, void 0, void 0, function* () {
             const user = yield this.ngFireAuth.currentUser;
+            console.log(user, 'user-------');
             const path = `uploads/${user.uid}/profile. png`;
             const storageRef = ref(this.storage, path);
             try {
@@ -621,11 +622,16 @@ class CameraComponent {
         this.position = 'floating';
         this.mode = "mode";
         this.cameraApiOutput = new EventEmitter();
-        // this.authService.getUserProfile().subscribe((data: null) => {
-        //   data = this.profile
-        // });
+        this.authService.getUserProfile().then((data) => {
+            this.profile = data;
+        });
     }
-    ngOnInit() { }
+    ngOnInit() {
+        this.authService.getUserProfile().then((data) => {
+            this.profile = data;
+            console.log(data, this.profile, 'imagesssssssss');
+        });
+    }
     changeImage() {
         return __awaiter(this, void 0, void 0, function* () {
             const image = yield Camera.getPhoto({
@@ -655,10 +661,10 @@ class CameraComponent {
     }
 }
 CameraComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.2.7", ngImport: i0, type: CameraComponent, deps: [{ token: AuthService }, { token: i1$1.LoadingController }, { token: i1$1.AlertController }, { token: i3$1.Router }], target: i0.ɵɵFactoryTarget.Component });
-CameraComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.2.7", type: CameraComponent, selector: "shared-camera", inputs: { position: "position", mode: "mode" }, outputs: { cameraApiOutput: "cameraApiOutput" }, ngImport: i0, template: "<ion-header [translucent]=\"true\">\r\n  <ion-toolbar color=\"primary\">\r\n    <!-- <ion-buttons slot=\"start\">\r\n      <ion-button expand=\"full\" type=\"button\" (click)=\"logout()\">\r\n        <ion-icon name=\"exit\"></ion-icon>\r\n      </ion-button>\r\n    </ion-buttons> -->\r\n    <ion-title>\r\n      My profile\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content [fullscreen]=\"true\">\r\n  <ion-content class=\"ion-padding\">\r\n    <div class=\"preview\">\r\n      <ion-avatar (click)=\"changeImage()\">\r\n        <script>\r\n          console.log(\"profile.imageUrl\", profile);\r\n        </script>\r\n        <img [src]=\"imageUrl\" />\r\n\r\n         <ng-template #placheholder_avatar>\r\n           <div class=\"fallback\">\r\n             <p>Select avatar</p>\r\n           </div>\r\n        </ng-template>\r\n      </ion-avatar>\r\n    </div>\r\n   </ion-content>\r\n</ion-content>\r\n", styles: [""], components: [{ type: i1$1.IonHeader, selector: "ion-header", inputs: ["collapse", "mode", "translucent"] }, { type: i1$1.IonToolbar, selector: "ion-toolbar", inputs: ["color", "mode"] }, { type: i1$1.IonTitle, selector: "ion-title", inputs: ["color", "size"] }, { type: i1$1.IonContent, selector: "ion-content", inputs: ["color", "forceOverscroll", "fullscreen", "scrollEvents", "scrollX", "scrollY"] }, { type: i1$1.IonAvatar, selector: "ion-avatar" }] });
+CameraComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.2.7", type: CameraComponent, selector: "shared-camera", inputs: { position: "position", mode: "mode" }, outputs: { cameraApiOutput: "cameraApiOutput" }, ngImport: i0, template: "<ion-header [translucent]=\"true\">\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>\r\n      My profile\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content [fullscreen]=\"true\">\r\n  <ion-content class=\"ion-padding\">\r\n    <div class=\"preview\">\r\n      <ion-avatar (click)=\"changeImage()\">\r\n        <img *ngIf=\"imageUrl; else placheholder_avatar;\" [src]=\"imageUrl\" />\r\n         <ng-template #placheholder_avatar>\r\n           <div class=\"fallback\">\r\n             <p>Select avatars</p>\r\n           </div>\r\n        </ng-template>\r\n      </ion-avatar>\r\n    </div>\r\n   </ion-content>\r\n</ion-content>\r\n", styles: [""], components: [{ type: i1$1.IonHeader, selector: "ion-header", inputs: ["collapse", "mode", "translucent"] }, { type: i1$1.IonToolbar, selector: "ion-toolbar", inputs: ["color", "mode"] }, { type: i1$1.IonTitle, selector: "ion-title", inputs: ["color", "size"] }, { type: i1$1.IonContent, selector: "ion-content", inputs: ["color", "forceOverscroll", "fullscreen", "scrollEvents", "scrollX", "scrollY"] }, { type: i1$1.IonAvatar, selector: "ion-avatar" }], directives: [{ type: i7.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }] });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.7", ngImport: i0, type: CameraComponent, decorators: [{
             type: Component,
-            args: [{ selector: 'shared-camera', template: "<ion-header [translucent]=\"true\">\r\n  <ion-toolbar color=\"primary\">\r\n    <!-- <ion-buttons slot=\"start\">\r\n      <ion-button expand=\"full\" type=\"button\" (click)=\"logout()\">\r\n        <ion-icon name=\"exit\"></ion-icon>\r\n      </ion-button>\r\n    </ion-buttons> -->\r\n    <ion-title>\r\n      My profile\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content [fullscreen]=\"true\">\r\n  <ion-content class=\"ion-padding\">\r\n    <div class=\"preview\">\r\n      <ion-avatar (click)=\"changeImage()\">\r\n        <script>\r\n          console.log(\"profile.imageUrl\", profile);\r\n        </script>\r\n        <img [src]=\"imageUrl\" />\r\n\r\n         <ng-template #placheholder_avatar>\r\n           <div class=\"fallback\">\r\n             <p>Select avatar</p>\r\n           </div>\r\n        </ng-template>\r\n      </ion-avatar>\r\n    </div>\r\n   </ion-content>\r\n</ion-content>\r\n", styles: [""] }]
+            args: [{ selector: 'shared-camera', template: "<ion-header [translucent]=\"true\">\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>\r\n      My profile\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content [fullscreen]=\"true\">\r\n  <ion-content class=\"ion-padding\">\r\n    <div class=\"preview\">\r\n      <ion-avatar (click)=\"changeImage()\">\r\n        <img *ngIf=\"imageUrl; else placheholder_avatar;\" [src]=\"imageUrl\" />\r\n         <ng-template #placheholder_avatar>\r\n           <div class=\"fallback\">\r\n             <p>Select avatars</p>\r\n           </div>\r\n        </ng-template>\r\n      </ion-avatar>\r\n    </div>\r\n   </ion-content>\r\n</ion-content>\r\n", styles: [""] }]
         }], ctorParameters: function () { return [{ type: AuthService }, { type: i1$1.LoadingController }, { type: i1$1.AlertController }, { type: i3$1.Router }]; }, propDecorators: { position: [{
                 type: Input
             }], mode: [{
