@@ -4,15 +4,20 @@ import * as i7 from '@angular/common';
 import { CommonModule } from '@angular/common';
 import * as i1$2 from '@angular/forms';
 import { NG_VALUE_ACCESSOR, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { __awaiter } from 'tslib';
 import * as i1 from '@angular/fire/compat/auth';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import * as i2 from '@angular/fire/compat/firestore';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import * as i3 from '@angular/fire/compat/storage';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import * as i1$1 from '@ionic/angular';
 import { IonicModule } from '@ionic/angular';
 import * as i1$3 from '@angular/fire/compat';
 import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import * as i3$1 from '@angular/router';
 
 // custom validator to check that two fields match
 function MustMatch(controlName, matchingControlName) {
@@ -34,8 +39,10 @@ function MustMatch(controlName, matchingControlName) {
 }
 
 class AuthService {
-    constructor(ngFireAuth) {
+    constructor(ngFireAuth, firestore, storage) {
         this.ngFireAuth = ngFireAuth;
+        this.firestore = firestore;
+        this.storage = storage;
         this.userData = ngFireAuth.authState;
     }
     /* Sign up */
@@ -46,12 +53,60 @@ class AuthService {
     SignIn(email, password) {
         return this.ngFireAuth.signInWithEmailAndPassword(email, password);
     }
+    logout() {
+        return this.ngFireAuth.signOut();
+    }
+    getUserProfile() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const user = yield this.ngFireAuth.currentUser;
+            const userDocRef = doc(this.firestore, `users/${user.uid}`);
+            console.log(userDocRef);
+            return docData(userDocRef);
+        });
+    }
+    uploadImage(cameraFile) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const user = yield this.ngFireAuth.currentUser;
+            const path = `uploads/${user.uid}/profile. png`;
+            const storageRef = ref(this.storage, path);
+            try {
+                uploadString(storageRef, cameraFile.base64String, 'base64');
+                const imageUrl = getDownloadURL(storageRef);
+                const userDocRef = doc(this.firestore, `users/${user.uid}`);
+                setDoc(userDocRef, {
+                    imageUrl,
+                });
+                return true;
+            }
+            catch (e) {
+                return null;
+            }
+        });
+    }
 }
-AuthService.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.2.7", ngImport: i0, type: AuthService, deps: [{ token: i1.AngularFireAuth }], target: i0.ɵɵFactoryTarget.Injectable });
+AuthService.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.2.7", ngImport: i0, type: AuthService, deps: [{ token: i1.AngularFireAuth }, { token: i2.AngularFirestore }, { token: i3.AngularFireStorage }], target: i0.ɵɵFactoryTarget.Injectable });
 AuthService.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "13.2.7", ngImport: i0, type: AuthService });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.7", ngImport: i0, type: AuthService, decorators: [{
             type: Injectable
-        }], ctorParameters: function () { return [{ type: i1.AngularFireAuth }]; } });
+        }], ctorParameters: function () { return [{ type: i1.AngularFireAuth }, { type: i2.AngularFirestore }, { type: i3.AngularFireStorage }]; } });
+function docData(userDocRef) {
+    throw new Error("Function not implemented.");
+}
+function ref(storage, path) {
+    throw new Error("Function not implemented.");
+}
+function uploadString(storageRef, base64String, arg2) {
+    throw new Error("Function not implemented.");
+}
+function getDownloadURL(storageRef) {
+    throw new Error("Function not implemented.");
+}
+function setDoc(userDocRef, arg1) {
+    throw new Error("Function not implemented.");
+}
+function doc(firestore, arg1) {
+    throw new Error("Function not implemented.");
+}
 
 class LabelComponent {
     constructor() {
@@ -547,10 +602,10 @@ class HomeComponent {
     }
 }
 HomeComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.2.7", ngImport: i0, type: HomeComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
-HomeComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.2.7", type: HomeComponent, selector: "shared-home", inputs: { mode: "mode" }, outputs: { homeSelection: "homeSelection" }, ngImport: i0, template: "<ion-content class=\"auth-form\">\r\n  <ion-grid>\r\n    <ion-row>\r\n      <ion-col align-self-center>\r\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"primary\" (click)=\"onButtonClick(0)\">Register</ion-button>\r\n        <br />\r\n        <ui-span [mode]=\"mode\" class=\"already\">or Already a user?</ui-span>\r\n        <br />\r\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"danger\" (click)=\"onButtonClick(1)\">Sign In</ion-button>\r\n        <br />\r\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"default\" (click)=\"onButtonClick(2)\">Camera</ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n</ion-content>\r\n", styles: [""], components: [{ type: i1$1.IonContent, selector: "ion-content", inputs: ["color", "forceOverscroll", "fullscreen", "scrollEvents", "scrollX", "scrollY"] }, { type: i1$1.IonGrid, selector: "ion-grid", inputs: ["fixed"] }, { type: i1$1.IonRow, selector: "ion-row" }, { type: i1$1.IonCol, selector: "ion-col", inputs: ["offset", "offsetLg", "offsetMd", "offsetSm", "offsetXl", "offsetXs", "pull", "pullLg", "pullMd", "pullSm", "pullXl", "pullXs", "push", "pushLg", "pushMd", "pushSm", "pushXl", "pushXs", "size", "sizeLg", "sizeMd", "sizeSm", "sizeXl", "sizeXs"] }, { type: i1$1.IonButton, selector: "ion-button", inputs: ["buttonType", "color", "disabled", "download", "expand", "fill", "href", "mode", "rel", "routerAnimation", "routerDirection", "shape", "size", "strong", "target", "type"] }, { type: SpanComponent, selector: "ui-span", inputs: ["text", "class", "color", "mode"] }] });
+HomeComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.2.7", type: HomeComponent, selector: "shared-home", inputs: { mode: "mode" }, outputs: { homeSelection: "homeSelection" }, ngImport: i0, template: "<ion-content class=\"auth-form\">\r\n  <ion-grid>\r\n    <ion-row>\r\n      <ion-col align-self-center>\r\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"primary\" (click)=\"onButtonClick(0)\">Register</ion-button>\r\n        <br />\r\n        <ui-span [mode]=\"mode\" class=\"already\">or Already a user?</ui-span>\r\n        <br />\r\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"danger\" (click)=\"onButtonClick(1)\">Sign In</ion-button>\r\n        <br />\r\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"success\" (click)=\"onButtonClick(2)\">Camera</ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n</ion-content>\r\n", styles: [""], components: [{ type: i1$1.IonContent, selector: "ion-content", inputs: ["color", "forceOverscroll", "fullscreen", "scrollEvents", "scrollX", "scrollY"] }, { type: i1$1.IonGrid, selector: "ion-grid", inputs: ["fixed"] }, { type: i1$1.IonRow, selector: "ion-row" }, { type: i1$1.IonCol, selector: "ion-col", inputs: ["offset", "offsetLg", "offsetMd", "offsetSm", "offsetXl", "offsetXs", "pull", "pullLg", "pullMd", "pullSm", "pullXl", "pullXs", "push", "pushLg", "pushMd", "pushSm", "pushXl", "pushXs", "size", "sizeLg", "sizeMd", "sizeSm", "sizeXl", "sizeXs"] }, { type: i1$1.IonButton, selector: "ion-button", inputs: ["buttonType", "color", "disabled", "download", "expand", "fill", "href", "mode", "rel", "routerAnimation", "routerDirection", "shape", "size", "strong", "target", "type"] }, { type: SpanComponent, selector: "ui-span", inputs: ["text", "class", "color", "mode"] }] });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.7", ngImport: i0, type: HomeComponent, decorators: [{
             type: Component,
-            args: [{ selector: 'shared-home', template: "<ion-content class=\"auth-form\">\r\n  <ion-grid>\r\n    <ion-row>\r\n      <ion-col align-self-center>\r\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"primary\" (click)=\"onButtonClick(0)\">Register</ion-button>\r\n        <br />\r\n        <ui-span [mode]=\"mode\" class=\"already\">or Already a user?</ui-span>\r\n        <br />\r\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"danger\" (click)=\"onButtonClick(1)\">Sign In</ion-button>\r\n        <br />\r\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"default\" (click)=\"onButtonClick(2)\">Camera</ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n</ion-content>\r\n", styles: [""] }]
+            args: [{ selector: 'shared-home', template: "<ion-content class=\"auth-form\">\r\n  <ion-grid>\r\n    <ion-row>\r\n      <ion-col align-self-center>\r\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"primary\" (click)=\"onButtonClick(0)\">Register</ion-button>\r\n        <br />\r\n        <ui-span [mode]=\"mode\" class=\"already\">or Already a user?</ui-span>\r\n        <br />\r\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"danger\" (click)=\"onButtonClick(1)\">Sign In</ion-button>\r\n        <br />\r\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"success\" (click)=\"onButtonClick(2)\">Camera</ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n</ion-content>\r\n", styles: [""] }]
         }], ctorParameters: function () { return []; }, propDecorators: { mode: [{
                 type: Input
             }], homeSelection: [{
@@ -558,15 +613,59 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.7", ngImpor
             }] } });
 
 class CameraComponent {
-    constructor() { }
+    constructor(authService, loadingController, alertController, router) {
+        this.authService = authService;
+        this.loadingController = loadingController;
+        this.alertController = alertController;
+        this.router = router;
+        this.position = 'floating';
+        this.mode = "mode";
+        this.cameraApiOutput = new EventEmitter();
+        // this.authService.getUserProfile().subscribe((data: null) => {
+        //   data = this.profile
+        // });
+    }
     ngOnInit() { }
+    changeImage() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const image = yield Camera.getPhoto({
+                quality: 90,
+                allowEditing: false,
+                resultType: CameraResultType.Uri,
+                source: CameraSource.Photos,
+            });
+            console.log(image);
+            if (image) {
+                const loading = yield this.loadingController.create();
+                yield loading.present();
+                const result = yield this.authService.uploadImage(image);
+                console.log("image", image);
+                loading.dismiss();
+                console.log(result);
+                if (!result) {
+                    const alert = yield this.alertController.create({
+                        header: 'Upload failed',
+                        message: 'There was aproblem uploading your avatar.',
+                        buttons: ['OK'],
+                    });
+                    yield alert.present();
+                }
+            }
+        });
+    }
 }
-CameraComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.2.7", ngImport: i0, type: CameraComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
-CameraComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.2.7", type: CameraComponent, selector: "shared-camera", ngImport: i0, template: "<ion-content>\r\n  <p>\r\n    this is camera works! and this is camera compenent\r\n  </p>\r\n</ion-content>\r\n", styles: [""], components: [{ type: i1$1.IonContent, selector: "ion-content", inputs: ["color", "forceOverscroll", "fullscreen", "scrollEvents", "scrollX", "scrollY"] }] });
+CameraComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.2.7", ngImport: i0, type: CameraComponent, deps: [{ token: AuthService }, { token: i1$1.LoadingController }, { token: i1$1.AlertController }, { token: i3$1.Router }], target: i0.ɵɵFactoryTarget.Component });
+CameraComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.2.7", type: CameraComponent, selector: "shared-camera", inputs: { position: "position", mode: "mode" }, outputs: { cameraApiOutput: "cameraApiOutput" }, ngImport: i0, template: "<ion-header [translucent]=\"true\">\r\n  <ion-toolbar color=\"primary\">\r\n    <!-- <ion-buttons slot=\"start\">\r\n      <ion-button expand=\"full\" type=\"button\" (click)=\"logout()\">\r\n        <ion-icon name=\"exit\"></ion-icon>\r\n      </ion-button>\r\n    </ion-buttons> -->\r\n    <ion-title>\r\n      My profile\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content [fullscreen]=\"true\">\r\n  <ion-content class=\"ion-padding\">\r\n    <div class=\"preview\">\r\n      <ion-avatar (click)=\"changeImage()\">\r\n        <script>\r\n          console.log(\"profile.imageUrl\", profile);\r\n        </script>\r\n        <img [src]=\"imageUrl\" />\r\n\r\n         <ng-template #placheholder_avatar>\r\n           <div class=\"fallback\">\r\n             <p>Select avatar</p>\r\n           </div>\r\n        </ng-template>\r\n      </ion-avatar>\r\n    </div>\r\n   </ion-content>\r\n</ion-content>\r\n", styles: [""], components: [{ type: i1$1.IonHeader, selector: "ion-header", inputs: ["collapse", "mode", "translucent"] }, { type: i1$1.IonToolbar, selector: "ion-toolbar", inputs: ["color", "mode"] }, { type: i1$1.IonTitle, selector: "ion-title", inputs: ["color", "size"] }, { type: i1$1.IonContent, selector: "ion-content", inputs: ["color", "forceOverscroll", "fullscreen", "scrollEvents", "scrollX", "scrollY"] }, { type: i1$1.IonAvatar, selector: "ion-avatar" }] });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.7", ngImport: i0, type: CameraComponent, decorators: [{
             type: Component,
-            args: [{ selector: 'shared-camera', template: "<ion-content>\r\n  <p>\r\n    this is camera works! and this is camera compenent\r\n  </p>\r\n</ion-content>\r\n", styles: [""] }]
-        }], ctorParameters: function () { return []; } });
+            args: [{ selector: 'shared-camera', template: "<ion-header [translucent]=\"true\">\r\n  <ion-toolbar color=\"primary\">\r\n    <!-- <ion-buttons slot=\"start\">\r\n      <ion-button expand=\"full\" type=\"button\" (click)=\"logout()\">\r\n        <ion-icon name=\"exit\"></ion-icon>\r\n      </ion-button>\r\n    </ion-buttons> -->\r\n    <ion-title>\r\n      My profile\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content [fullscreen]=\"true\">\r\n  <ion-content class=\"ion-padding\">\r\n    <div class=\"preview\">\r\n      <ion-avatar (click)=\"changeImage()\">\r\n        <script>\r\n          console.log(\"profile.imageUrl\", profile);\r\n        </script>\r\n        <img [src]=\"imageUrl\" />\r\n\r\n         <ng-template #placheholder_avatar>\r\n           <div class=\"fallback\">\r\n             <p>Select avatar</p>\r\n           </div>\r\n        </ng-template>\r\n      </ion-avatar>\r\n    </div>\r\n   </ion-content>\r\n</ion-content>\r\n", styles: [""] }]
+        }], ctorParameters: function () { return [{ type: AuthService }, { type: i1$1.LoadingController }, { type: i1$1.AlertController }, { type: i3$1.Router }]; }, propDecorators: { position: [{
+                type: Input
+            }], mode: [{
+                type: Input
+            }], cameraApiOutput: [{
+                type: Output
+            }] } });
 
 const firebaseConfig = {
     apiKey: "AIzaSyCReG0gdJuamOJeX0yv-Kxn2Pf-08MaBz0",
