@@ -50,7 +50,8 @@ const firebaseConfig = {
     SignupComponent,
     LoginComponent,
     HomeComponent,
-    CameraComponent
+    CameraComponent,
+    CamerahomeComponent
   ],
   providers: [
     AuthService
