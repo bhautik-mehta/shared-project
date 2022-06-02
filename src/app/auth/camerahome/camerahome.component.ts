@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'shared-camerahome',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./camerahome.component.scss'],
 })
 export class CamerahomeComponent implements OnInit {
+  @Input() position = 'floating';
+  @Input() mode = "mode";
+  @Output() cameraHomeApiOutput = new EventEmitter();
 
   constructor() { }
 
