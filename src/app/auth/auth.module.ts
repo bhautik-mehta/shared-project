@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
+import { CameraComponent } from './camera/camera.component';
+import { CamerahomeComponent } from './camerahome/camerahome.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { AngularFireModule } from "@angular/fire/compat";
@@ -12,8 +14,6 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { UiSharedModule } from '../ui-shared/ui-shared.module';
 import { AuthService } from './core/_services/auth.services';
 import { HomeComponent } from './home/home.component';
-import { CameraComponent } from './camera/camera.component';
-import { CamerahomeComponent } from './camerahome/camerahome.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCReG0gdJuamOJeX0yv-Kxn2Pf-08MaBz0",
