@@ -9,6 +9,10 @@
   <ion-content class="ion-padding">
     <div class="preview">
       this is camerahome works!
+
+      <div class="camera">
+        <input type="file" id="file" #userPhoto (change)="onFileSelected($event)" name="image" autocomplete="off" />
+      </div>
     </div>
   </ion-content>
 </ion-content>
