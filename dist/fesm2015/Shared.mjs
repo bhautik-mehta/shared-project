@@ -469,7 +469,9 @@ class CamerahomeComponent {
     }
     ngOnInit() { }
     onFileSelected(event) {
-        var n = Date.name;
+        const d = new Date();
+        let n = d.getDate();
+        // var n = Date.now();
         const file = event.target.files[0];
         console.log('file------', file);
         const filePath = `RoomsImages/${n}`;
