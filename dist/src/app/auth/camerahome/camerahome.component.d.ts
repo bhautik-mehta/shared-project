@@ -6,7 +6,6 @@ import * as i0 from "@angular/core";
 export declare class CamerahomeComponent implements OnInit {
     private Api;
     private storage;
-    private basePath;
     position: string;
     mode: string;
     cameraHomeApiOutput: EventEmitter<any>;

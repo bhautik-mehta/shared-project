@@ -449,12 +449,10 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.7", ngImpor
                 type: Output
             }] } });
 
-// import { FileUpload } from '../model/file-upload';
 class CamerahomeComponent {
     constructor(Api, storage) {
         this.Api = Api;
         this.storage = storage;
-        this.basePath = '/uploadsimg';
         this.position = 'floating';
         this.mode = "mode";
         this.cameraHomeApiOutput = new EventEmitter();
@@ -473,9 +471,6 @@ class CamerahomeComponent {
             .pipe(finalize(() => {
             this.downloadURL = fileRef.getDownloadURL();
             this.downloadURL.subscribe(url => {
-                // this.fileUpload.url = url;
-                // this.fileUpload.name = this.fileUpload.file.name;
-                // this.saveFileData(this.fileUpload);
                 if (url) {
                     this.fb = url;
                 }
