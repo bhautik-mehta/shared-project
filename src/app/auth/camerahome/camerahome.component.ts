@@ -21,17 +21,15 @@ export class CamerahomeComponent implements OnInit {
   constructor(private Api: AuthService, private storage: AngularFireStorage) { }
   ngOnInit() { }
   onFileSelected(event) {
-    const d = new Date();
-    let n = d.getDate();
-    // var n = Date.now();
-    const file = event.target.files[0].name;
+    var n = Date.now();
+    const file = event.target.files[0];
     console.log('file------', file);
 
     const filePath = `RoomsImages/${n}`;
     console.log('filePath------', filePath);
     const fileRef = this.storage.ref(filePath);
     console.log('fileRef------', fileRef);
-    const task = this.storage.upload(`RoomsImages/${n}`, file.name);
+    const task = this.storage.upload(`RoomsImages/${n}`, file);
     console.log('task------', task);
     task
       .snapshotChanges()
