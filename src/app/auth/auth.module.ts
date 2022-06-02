@@ -13,6 +13,7 @@ import { UiSharedModule } from '../ui-shared/ui-shared.module';
 import { AuthService } from './core/_services/auth.services';
 import { HomeComponent } from './home/home.component';
 import { CameraComponent } from './camera/camera.component';
+import { CamerahomeComponent } from './camerahome/camerahome.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCReG0gdJuamOJeX0yv-Kxn2Pf-08MaBz0",
@@ -28,7 +29,8 @@ const firebaseConfig = {
     SignupComponent,
     LoginComponent,
     HomeComponent,
-    CameraComponent
+    CameraComponent,
+    CamerahomeComponent
   ],
   imports: [
     CommonModule,
