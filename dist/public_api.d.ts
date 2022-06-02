@@ -4,6 +4,7 @@ export * from './src/app/auth/signup/signup.component';
 export * from './src/app/auth/home/home.component';
 export * from './src/app/auth/camera/camera.component';
 export * from './src/app/auth/camerahome/camerahome.component';
+export * from './src/app/auth/showimg/showimg.component';
 export * from './src/app/ui-shared/ui-shared.module';
 export * from './src/app/ui-shared/checkbox/checkbox.component';
 export * from './src/app/ui-shared/input/input.component';
