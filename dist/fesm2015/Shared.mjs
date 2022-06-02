@@ -16,7 +16,6 @@ import { IonicModule } from '@ionic/angular';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import * as i3$2 from '@angular/router';
 import { finalize } from 'rxjs/operators';
-import * as i1$2 from '@angular/fire/compat';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
@@ -727,14 +726,14 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.7", ngImpor
                 type: Output
             }] } });
 
-const firebaseConfig = {
-    apiKey: "AIzaSyCReG0gdJuamOJeX0yv-Kxn2Pf-08MaBz0",
-    authDomain: "ionic-project-7efec.firebaseapp.com",
-    projectId: "ionic-project-7efec",
-    storageBucket: "ionic-project-7efec.appspot.com",
-    messagingSenderId: "939844814718",
-    appId: "1:939844814718:web:86ae412c365c873832952f"
-};
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCReG0gdJuamOJeX0yv-Kxn2Pf-08MaBz0",
+//   authDomain: "ionic-project-7efec.firebaseapp.com",
+//   projectId: "ionic-project-7efec",
+//   storageBucket: "ionic-project-7efec.appspot.com",
+//   messagingSenderId: "939844814718",
+//   appId: "1:939844814718:web:86ae412c365c873832952f"
+// }
 class SharedAuthModule {
 }
 SharedAuthModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.2.7", ngImport: i0, type: SharedAuthModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
@@ -746,7 +745,11 @@ SharedAuthModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", versio
         FormsModule,
         ReactiveFormsModule,
         IonicModule,
-        UiSharedModule, i1$2.AngularFireModule, AngularFireAuthModule,
+        UiSharedModule,
+        // Firebase
+        // AngularFireModule.initializeApp(firebaseConfig),
+        AngularFireModule,
+        AngularFireAuthModule,
         AngularFirestoreModule,
         AngularFireStorageModule,
         AngularFireDatabaseModule], exports: [SignupComponent,
@@ -763,7 +766,8 @@ SharedAuthModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", versio
             IonicModule,
             UiSharedModule,
             // Firebase
-            AngularFireModule.initializeApp(firebaseConfig),
+            // AngularFireModule.initializeApp(firebaseConfig),
+            AngularFireModule,
             AngularFireAuthModule,
             AngularFirestoreModule,
             AngularFireStorageModule,
@@ -786,7 +790,8 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.7", ngImpor
                         IonicModule,
                         UiSharedModule,
                         // Firebase
-                        AngularFireModule.initializeApp(firebaseConfig),
+                        // AngularFireModule.initializeApp(firebaseConfig),
+                        AngularFireModule,
                         AngularFireAuthModule,
                         AngularFirestoreModule,
                         AngularFireStorageModule,

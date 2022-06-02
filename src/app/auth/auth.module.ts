@@ -15,14 +15,14 @@ import { UiSharedModule } from '../ui-shared/ui-shared.module';
 import { AuthService } from './core/_services/auth.services';
 import { HomeComponent } from './home/home.component';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCReG0gdJuamOJeX0yv-Kxn2Pf-08MaBz0",
-  authDomain: "ionic-project-7efec.firebaseapp.com",
-  projectId: "ionic-project-7efec",
-  storageBucket: "ionic-project-7efec.appspot.com",
-  messagingSenderId: "939844814718",
-  appId: "1:939844814718:web:86ae412c365c873832952f"
-}
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCReG0gdJuamOJeX0yv-Kxn2Pf-08MaBz0",
+//   authDomain: "ionic-project-7efec.firebaseapp.com",
+//   projectId: "ionic-project-7efec",
+//   storageBucket: "ionic-project-7efec.appspot.com",
+//   messagingSenderId: "939844814718",
+//   appId: "1:939844814718:web:86ae412c365c873832952f"
+// }
 
 @NgModule({
   declarations: [
@@ -38,9 +38,9 @@ const firebaseConfig = {
     ReactiveFormsModule,
     IonicModule,
     UiSharedModule,
-
     // Firebase
-    AngularFireModule.initializeApp(firebaseConfig),
+    // AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
