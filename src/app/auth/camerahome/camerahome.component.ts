@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-camerahome',
+  selector: 'shared-camerahome',
   templateUrl: './camerahome.component.html',
   styleUrls: ['./camerahome.component.scss'],
 })
