@@ -462,11 +462,15 @@ class CamerahomeComponent {
     }
     ngOnInit() { }
     onFileSelected(event) {
-        var n = Date.now();
+        var n = Date.name;
         const file = event.target.files[0];
+        console.log('file------', file);
         const filePath = `RoomsImages/${n}`;
+        console.log('filePath------', filePath);
         const fileRef = this.storage.ref(filePath);
+        console.log('fileRef------', fileRef);
         const task = this.storage.upload(`RoomsImages/${n}`, file);
+        console.log('task------', task);
         task
             .snapshotChanges()
             .pipe(finalize(() => {
@@ -480,7 +484,7 @@ class CamerahomeComponent {
         }))
             .subscribe(url => {
             if (url) {
-                console.log(url);
+                console.log('this my final url', url);
             }
         });
     }
