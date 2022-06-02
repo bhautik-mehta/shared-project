@@ -603,10 +603,10 @@ class HomeComponent {
     }
 }
 HomeComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.2.7", ngImport: i0, type: HomeComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
-HomeComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.2.7", type: HomeComponent, selector: "shared-home", inputs: { mode: "mode" }, outputs: { homeSelection: "homeSelection" }, ngImport: i0, template: "<ion-content class=\"auth-form\">\r\n  <ion-grid>\r\n    <ion-row>\r\n      <ion-col align-self-center>\r\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"primary\" (click)=\"onButtonClick(0)\">Register</ion-button>\r\n        <br />\r\n        <ui-span [mode]=\"mode\" class=\"already\">or Already a user?</ui-span>\r\n        <br />\r\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"danger\" (click)=\"onButtonClick(1)\">Sign In</ion-button>\r\n        <br />\r\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"success\" (click)=\"onButtonClick(2)\">Camera</ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n</ion-content>\r\n", styles: [""], components: [{ type: i1$1.IonContent, selector: "ion-content", inputs: ["color", "forceOverscroll", "fullscreen", "scrollEvents", "scrollX", "scrollY"] }, { type: i1$1.IonGrid, selector: "ion-grid", inputs: ["fixed"] }, { type: i1$1.IonRow, selector: "ion-row" }, { type: i1$1.IonCol, selector: "ion-col", inputs: ["offset", "offsetLg", "offsetMd", "offsetSm", "offsetXl", "offsetXs", "pull", "pullLg", "pullMd", "pullSm", "pullXl", "pullXs", "push", "pushLg", "pushMd", "pushSm", "pushXl", "pushXs", "size", "sizeLg", "sizeMd", "sizeSm", "sizeXl", "sizeXs"] }, { type: i1$1.IonButton, selector: "ion-button", inputs: ["buttonType", "color", "disabled", "download", "expand", "fill", "href", "mode", "rel", "routerAnimation", "routerDirection", "shape", "size", "strong", "target", "type"] }, { type: SpanComponent, selector: "ui-span", inputs: ["text", "class", "color", "mode"] }] });
+HomeComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.2.7", type: HomeComponent, selector: "shared-home", inputs: { mode: "mode" }, outputs: { homeSelection: "homeSelection" }, ngImport: i0, template: "<ion-content class=\"auth-form\">\r\n  <ion-grid>\r\n    <ion-row>\r\n      <ion-col align-self-center>\r\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"primary\" (click)=\"onButtonClick(0)\">Register</ion-button>\r\n        <br />\r\n        <ui-span [mode]=\"mode\" class=\"already\">or Already a user?</ui-span>\r\n        <br />\r\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"danger\" (click)=\"onButtonClick(1)\">Sign In</ion-button>\r\n        <br />\r\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"success\" (click)=\"onButtonClick(2)\">Camera</ion-button>\r\n        <br />\r\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"dark\" (click)=\"onButtonClick(3)\">Home Camera</ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n</ion-content>\r\n", styles: [""], components: [{ type: i1$1.IonContent, selector: "ion-content", inputs: ["color", "forceOverscroll", "fullscreen", "scrollEvents", "scrollX", "scrollY"] }, { type: i1$1.IonGrid, selector: "ion-grid", inputs: ["fixed"] }, { type: i1$1.IonRow, selector: "ion-row" }, { type: i1$1.IonCol, selector: "ion-col", inputs: ["offset", "offsetLg", "offsetMd", "offsetSm", "offsetXl", "offsetXs", "pull", "pullLg", "pullMd", "pullSm", "pullXl", "pullXs", "push", "pushLg", "pushMd", "pushSm", "pushXl", "pushXs", "size", "sizeLg", "sizeMd", "sizeSm", "sizeXl", "sizeXs"] }, { type: i1$1.IonButton, selector: "ion-button", inputs: ["buttonType", "color", "disabled", "download", "expand", "fill", "href", "mode", "rel", "routerAnimation", "routerDirection", "shape", "size", "strong", "target", "type"] }, { type: SpanComponent, selector: "ui-span", inputs: ["text", "class", "color", "mode"] }] });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.7", ngImport: i0, type: HomeComponent, decorators: [{
             type: Component,
-            args: [{ selector: 'shared-home', template: "<ion-content class=\"auth-form\">\r\n  <ion-grid>\r\n    <ion-row>\r\n      <ion-col align-self-center>\r\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"primary\" (click)=\"onButtonClick(0)\">Register</ion-button>\r\n        <br />\r\n        <ui-span [mode]=\"mode\" class=\"already\">or Already a user?</ui-span>\r\n        <br />\r\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"danger\" (click)=\"onButtonClick(1)\">Sign In</ion-button>\r\n        <br />\r\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"success\" (click)=\"onButtonClick(2)\">Camera</ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n</ion-content>\r\n", styles: [""] }]
+            args: [{ selector: 'shared-home', template: "<ion-content class=\"auth-form\">\r\n  <ion-grid>\r\n    <ion-row>\r\n      <ion-col align-self-center>\r\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"primary\" (click)=\"onButtonClick(0)\">Register</ion-button>\r\n        <br />\r\n        <ui-span [mode]=\"mode\" class=\"already\">or Already a user?</ui-span>\r\n        <br />\r\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"danger\" (click)=\"onButtonClick(1)\">Sign In</ion-button>\r\n        <br />\r\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"success\" (click)=\"onButtonClick(2)\">Camera</ion-button>\r\n        <br />\r\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"dark\" (click)=\"onButtonClick(3)\">Home Camera</ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n</ion-content>\r\n", styles: [""] }]
         }], ctorParameters: function () { return []; }, propDecorators: { mode: [{
                 type: Input
             }], homeSelection: [{
@@ -678,6 +678,27 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.7", ngImpor
                 type: Output
             }] } });
 
+class CamerahomeComponent {
+    constructor() {
+        this.position = 'floating';
+        this.mode = "mode";
+        this.cameraHomeApiOutput = new EventEmitter();
+    }
+    ngOnInit() { }
+}
+CamerahomeComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.2.7", ngImport: i0, type: CamerahomeComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
+CamerahomeComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.2.7", type: CamerahomeComponent, selector: "shared-camerahome", inputs: { position: "position", mode: "mode" }, outputs: { cameraHomeApiOutput: "cameraHomeApiOutput" }, ngImport: i0, template: "<ion-header [translucent]=\"true\">\n  <ion-toolbar color=\"primary\">\n    <ion-title>\n      My home camera\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content [fullscreen]=\"true\">\n  <ion-content class=\"ion-padding\">\n    <p>\n      this is camerahome works!\n    </p>\n  </ion-content>\n</ion-content>\n", styles: [""], components: [{ type: i1$1.IonHeader, selector: "ion-header", inputs: ["collapse", "mode", "translucent"] }, { type: i1$1.IonToolbar, selector: "ion-toolbar", inputs: ["color", "mode"] }, { type: i1$1.IonTitle, selector: "ion-title", inputs: ["color", "size"] }, { type: i1$1.IonContent, selector: "ion-content", inputs: ["color", "forceOverscroll", "fullscreen", "scrollEvents", "scrollX", "scrollY"] }] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.7", ngImport: i0, type: CamerahomeComponent, decorators: [{
+            type: Component,
+            args: [{ selector: 'shared-camerahome', template: "<ion-header [translucent]=\"true\">\n  <ion-toolbar color=\"primary\">\n    <ion-title>\n      My home camera\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content [fullscreen]=\"true\">\n  <ion-content class=\"ion-padding\">\n    <p>\n      this is camerahome works!\n    </p>\n  </ion-content>\n</ion-content>\n", styles: [""] }]
+        }], ctorParameters: function () { return []; }, propDecorators: { position: [{
+                type: Input
+            }], mode: [{
+                type: Input
+            }], cameraHomeApiOutput: [{
+                type: Output
+            }] } });
+
 const firebaseConfig = {
     apiKey: "AIzaSyCReG0gdJuamOJeX0yv-Kxn2Pf-08MaBz0",
     authDomain: "ionic-project-7efec.firebaseapp.com",
@@ -692,7 +713,8 @@ SharedAuthModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version
 SharedAuthModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "13.2.7", ngImport: i0, type: SharedAuthModule, declarations: [SignupComponent,
         LoginComponent,
         HomeComponent,
-        CameraComponent], imports: [CommonModule,
+        CameraComponent,
+        CamerahomeComponent], imports: [CommonModule,
         FormsModule,
         ReactiveFormsModule,
         IonicModule,
@@ -725,7 +747,8 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.7", ngImpor
                         SignupComponent,
                         LoginComponent,
                         HomeComponent,
-                        CameraComponent
+                        CameraComponent,
+                        CamerahomeComponent
                     ],
                     imports: [
                         CommonModule,
