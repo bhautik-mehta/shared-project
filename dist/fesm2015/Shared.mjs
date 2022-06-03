@@ -385,6 +385,7 @@ class CamerahomeComponent {
         const filePath = `RoomsImages/${n}`;
         const fileRef = this.storage.ref(filePath);
         const task = this.storage.upload(`RoomsImages/${n}`, file);
+        const dbtask = this.db.list(`RoomsImages/${n}`, file);
         task
             .snapshotChanges()
             .pipe(finalize(() => {
@@ -401,19 +402,29 @@ class CamerahomeComponent {
                 console.log(url);
             }
         });
-    }
-    getFiles(numberItems) {
-        console.log('number items----', numberItems);
-        console.log('number items----', this.basePath);
-        console.log('final ans', this.db.list(this.basePath, ref => ref.limitToLast(numberItems)));
-        return this.db.list(this.basePath, ref => ref.limitToLast(numberItems));
+        dbtask
+            .snapshotChanges()
+            .pipe(finalize(() => {
+            this.downloadURL = fileRef.getDownloadURL();
+            this.downloadURL.subscribe(url => {
+                if (url) {
+                    this.fb = url;
+                }
+                console.log(this.fb);
+            });
+        }))
+            .subscribe(url => {
+            if (url) {
+                console.log(url);
+            }
+        });
     }
 }
 CamerahomeComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.2.7", ngImport: i0, type: CamerahomeComponent, deps: [{ token: i1$3.AngularFireDatabase }, { token: AuthService }, { token: i3.AngularFireStorage }], target: i0.ɵɵFactoryTarget.Component });
-CamerahomeComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.2.7", type: CamerahomeComponent, selector: "shared-camerahome", inputs: { position: "position", mode: "mode" }, outputs: { cameraHomeApiOutput: "cameraHomeApiOutput" }, ngImport: i0, template: "<ion-header [translucent]=\"true\">\n  <ion-toolbar color=\"primary\">\n    <ion-title>\n      My home camera\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content [fullscreen]=\"true\">\n  <ion-content class=\"ion-padding\">\n    <div class=\"preview\">\n      this is camerahome works!\n\n      <div class=\"camera\">\n        <input type=\"file\" id=\"file\" #userPhoto (change)=\"onFileSelected($event)\" name=\"image\" autocomplete=\"off\" />\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"primary\" (click)=\"getFiles($event)\"></ion-button>\n      </div>\n    </div>\n  </ion-content>\n</ion-content>\n", styles: [""], components: [{ type: i1$1.IonHeader, selector: "ion-header", inputs: ["collapse", "mode", "translucent"] }, { type: i1$1.IonToolbar, selector: "ion-toolbar", inputs: ["color", "mode"] }, { type: i1$1.IonTitle, selector: "ion-title", inputs: ["color", "size"] }, { type: i1$1.IonContent, selector: "ion-content", inputs: ["color", "forceOverscroll", "fullscreen", "scrollEvents", "scrollX", "scrollY"] }, { type: i1$1.IonButton, selector: "ion-button", inputs: ["buttonType", "color", "disabled", "download", "expand", "fill", "href", "mode", "rel", "routerAnimation", "routerDirection", "shape", "size", "strong", "target", "type"] }] });
+CamerahomeComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.2.7", type: CamerahomeComponent, selector: "shared-camerahome", inputs: { position: "position", mode: "mode" }, outputs: { cameraHomeApiOutput: "cameraHomeApiOutput" }, ngImport: i0, template: "<ion-header [translucent]=\"true\">\n  <ion-toolbar color=\"primary\">\n    <ion-title>\n      My home camera\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content [fullscreen]=\"true\">\n  <ion-content class=\"ion-padding\">\n    <div class=\"preview\">\n      this is camerahome works!\n\n      <div class=\"camera\">\n        <input type=\"file\" id=\"file\" #userPhoto (change)=\"onFileSelected($event)\" name=\"image\" autocomplete=\"off\" />\n        <!-- <ion-button [mode]=\"mode\" expand=\"block\" color=\"primary\" (click)=\"expression\")></ion-button> -->\n      </div>\n    </div>\n  </ion-content>\n</ion-content>\n", styles: [""], components: [{ type: i1$1.IonHeader, selector: "ion-header", inputs: ["collapse", "mode", "translucent"] }, { type: i1$1.IonToolbar, selector: "ion-toolbar", inputs: ["color", "mode"] }, { type: i1$1.IonTitle, selector: "ion-title", inputs: ["color", "size"] }, { type: i1$1.IonContent, selector: "ion-content", inputs: ["color", "forceOverscroll", "fullscreen", "scrollEvents", "scrollX", "scrollY"] }] });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.7", ngImport: i0, type: CamerahomeComponent, decorators: [{
             type: Component,
-            args: [{ selector: 'shared-camerahome', template: "<ion-header [translucent]=\"true\">\n  <ion-toolbar color=\"primary\">\n    <ion-title>\n      My home camera\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content [fullscreen]=\"true\">\n  <ion-content class=\"ion-padding\">\n    <div class=\"preview\">\n      this is camerahome works!\n\n      <div class=\"camera\">\n        <input type=\"file\" id=\"file\" #userPhoto (change)=\"onFileSelected($event)\" name=\"image\" autocomplete=\"off\" />\n        <ion-button [mode]=\"mode\" expand=\"block\" color=\"primary\" (click)=\"getFiles($event)\"></ion-button>\n      </div>\n    </div>\n  </ion-content>\n</ion-content>\n", styles: [""] }]
+            args: [{ selector: 'shared-camerahome', template: "<ion-header [translucent]=\"true\">\n  <ion-toolbar color=\"primary\">\n    <ion-title>\n      My home camera\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content [fullscreen]=\"true\">\n  <ion-content class=\"ion-padding\">\n    <div class=\"preview\">\n      this is camerahome works!\n\n      <div class=\"camera\">\n        <input type=\"file\" id=\"file\" #userPhoto (change)=\"onFileSelected($event)\" name=\"image\" autocomplete=\"off\" />\n        <!-- <ion-button [mode]=\"mode\" expand=\"block\" color=\"primary\" (click)=\"expression\")></ion-button> -->\n      </div>\n    </div>\n  </ion-content>\n</ion-content>\n", styles: [""] }]
         }], ctorParameters: function () { return [{ type: i1$3.AngularFireDatabase }, { type: AuthService }, { type: i3.AngularFireStorage }]; }, propDecorators: { position: [{
                 type: Input
             }], mode: [{
