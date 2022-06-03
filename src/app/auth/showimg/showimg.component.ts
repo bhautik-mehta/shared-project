@@ -22,11 +22,7 @@ export class ShowimgComponent implements OnInit {
   tutorials
   ngOnInit() {
     this.db.collection('images').valueChanges().subscribe(res => {
-      this.date = res.map(ele => {
-        if (ele instanceof NavigationEnd) {
-          console.log(ele.url)
-        }
-      });
+      this.date = res
     });
 
   }
