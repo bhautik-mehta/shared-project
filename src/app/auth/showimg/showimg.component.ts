@@ -21,7 +21,7 @@ export class ShowimgComponent implements OnInit {
   tutorials
   ngOnInit() {
     this.db.collection('images').valueChanges().subscribe(
-      res => console.log(res)
+      res => console.log(res[0])
     );
     console.log('hello');
 
