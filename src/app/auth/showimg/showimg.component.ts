@@ -24,6 +24,7 @@ export class ShowimgComponent implements OnInit {
     this.db.collection('images').valueChanges().subscribe(res => {
       this.date = res.map(ele => {
         console.log(ele)
+        console.log(res)
         ele
       });
     });
