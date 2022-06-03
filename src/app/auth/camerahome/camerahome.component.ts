@@ -37,6 +37,9 @@ export class CamerahomeComponent implements OnInit {
           this.downloadURL.subscribe(url => {
             if (url) {
               this.fb = url;
+              const dbtask = this.db.collection('images').add({ url: this.fb }).then(
+                success => console.log(success, 'successfully done')
+              ).catch(e => console.log(e, 'something wrong'));
             }
             console.log('this.fb-------', this.fb);
           });
@@ -45,10 +48,6 @@ export class CamerahomeComponent implements OnInit {
       .subscribe(url => {
         if (url) {
           console.log('url------------', url);
-          const dbtask = this.db.collection('images').add({ url: this.fb }).then(
-            success => console.log(success, 'successfully done')
-          ).catch(e => console.log(e, 'something wrong'));
-
         }
       });
   }
