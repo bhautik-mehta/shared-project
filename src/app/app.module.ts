@@ -13,6 +13,8 @@ import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -24,6 +26,7 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
     AppRoutingModule,
     UiSharedModule,
     SharedAuthModule,
+    AngularFireDatabase,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
