@@ -14,16 +14,16 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 })
 export class ShowimgComponent implements OnInit {
   private basePath = '/RoomsImages';
+  date = [];
   @Input() position = 'floating';
   @Input() mode = "mode";
   @Output() showImgApiOutput = new EventEmitter();
   constructor(private db: AngularFirestore, private Api: AuthService, private storage: AngularFireStorage) { }
   tutorials
   ngOnInit() {
-    this.db.collection('images').valueChanges().subscribe(
-      res => console.log(res[0])
-    );
-    console.log('hello');
+    this.db.collection('images').valueChanges().subscribe(res => {
+      this.date = res.map(ele => ele);
+    });
 
   }
 }
