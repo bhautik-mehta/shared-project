@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../core/_services/auth.services';
 import { FileUpload } from '../model/file-upload';
 import { getStorage, ref, listAll } from "firebase/storage";
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 @Component({
   selector: 'shared-showimg',
   templateUrl: './showimg.component.html',
@@ -16,17 +17,11 @@ export class ShowimgComponent implements OnInit {
   @Input() position = 'floating';
   @Input() mode = "mode";
   @Output() showImgApiOutput = new EventEmitter();
-  constructor(private db: AngularFireDatabase, private Api: AuthService, private storage: AngularFireStorage) { }
-
-  ngOnInit() { }
-
-  getImages(fileUpload: FileUpload) {
-    const filePath = `${this.basePath}/${fileUpload.file.name}`;
-    console.log('filePath-------', filePath);
-    const storageRef = this.storage.ref(filePath);
-    console.log('storageRef-------', storageRef);
-
+  constructor(private db: AngularFirestore, private Api: AuthService, private storage: AngularFireStorage) { }
+  tutorials
+  ngOnInit() {
+    this.db.collection('images').valueChanges().subscribe(
+      res => console.log(res)
+    );
   }
-
-
 }
