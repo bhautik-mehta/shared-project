@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../core/_services/auth.services';
 import { FileUpload } from '../model/file-upload';
@@ -23,7 +23,9 @@ export class ShowimgComponent implements OnInit {
   ngOnInit() {
     this.db.collection('images').valueChanges().subscribe(res => {
       this.date = res.map(ele => {
-        console.log(ele)
+        if (ele instanceof NavigationEnd) {
+          console.log(ele.url)
+        }
         console.log(res)
         ele
       });
