@@ -45,7 +45,7 @@ export class CamerahomeComponent implements OnInit {
       .subscribe(url => {
         if (url) {
           console.log(url);
-          const dbtask = this.db.collection('images').add(url)
+          const dbtask = this.db.collection('images').add({ url: url })
         }
       });
   }
