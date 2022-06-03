@@ -1,0 +1,43 @@
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { NavigationEnd } from '@angular/router';
+import * as i0 from "@angular/core";
+import * as i1 from "@angular/fire/compat/firestore";
+import * as i2 from "../core/_services/auth.services";
+import * as i3 from "@angular/fire/compat/storage";
+import * as i4 from "@ionic/angular";
+export class ShowimgComponent {
+    constructor(db, Api, storage) {
+        this.db = db;
+        this.Api = Api;
+        this.storage = storage;
+        this.basePath = '/RoomsImages';
+        this.date = [];
+        this.position = 'floating';
+        this.mode = "mode";
+        this.showImgApiOutput = new EventEmitter();
+    }
+    ngOnInit() {
+        this.db.collection('images').valueChanges().subscribe(res => {
+            this.date = res.map(ele => {
+                if (ele instanceof NavigationEnd) {
+                    console.log(ele.url);
+                }
+                console.log(res);
+                ele;
+            });
+        });
+    }
+}
+ShowimgComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.2.7", ngImport: i0, type: ShowimgComponent, deps: [{ token: i1.AngularFirestore }, { token: i2.AuthService }, { token: i3.AngularFireStorage }], target: i0.ɵɵFactoryTarget.Component });
+ShowimgComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.2.7", type: ShowimgComponent, selector: "shared-showimg", inputs: { position: "position", mode: "mode" }, outputs: { showImgApiOutput: "showImgApiOutput" }, ngImport: i0, template: "<ion-header [translucent]=\"true\">\n  <ion-toolbar color=\"primary\">\n    <ion-title>\n      My home camera\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content [fullscreen]=\"true\">\n  <ion-content class=\"ion-padding\">\n    <div class=\"preview\">\n      this is preview below\n      <div class=\"show-img\">\n        <div class=\"images-preview\">\n          <img src=\"https://via.placeholder.com/500\" class=\"img-responsive\" />\n        </div>\n        <div class=\"images-preview\">\n          <img src=\"https://via.placeholder.com/200\" class=\"img-responsive\" />\n        </div>\n      </div>\n    </div>\n  </ion-content>\n</ion-content>\n", styles: [".show-img{display:grid;grid-template-columns:repeat(5,1fr);grid-gap:10px;gap:10px}.images-preview{height:300px;width:300px;object-fit:contain}.img-responsive{width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain}\n"], components: [{ type: i4.IonHeader, selector: "ion-header", inputs: ["collapse", "mode", "translucent"] }, { type: i4.IonToolbar, selector: "ion-toolbar", inputs: ["color", "mode"] }, { type: i4.IonTitle, selector: "ion-title", inputs: ["color", "size"] }, { type: i4.IonContent, selector: "ion-content", inputs: ["color", "forceOverscroll", "fullscreen", "scrollEvents", "scrollX", "scrollY"] }] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.2.7", ngImport: i0, type: ShowimgComponent, decorators: [{
+            type: Component,
+            args: [{ selector: 'shared-showimg', template: "<ion-header [translucent]=\"true\">\n  <ion-toolbar color=\"primary\">\n    <ion-title>\n      My home camera\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content [fullscreen]=\"true\">\n  <ion-content class=\"ion-padding\">\n    <div class=\"preview\">\n      this is preview below\n      <div class=\"show-img\">\n        <div class=\"images-preview\">\n          <img src=\"https://via.placeholder.com/500\" class=\"img-responsive\" />\n        </div>\n        <div class=\"images-preview\">\n          <img src=\"https://via.placeholder.com/200\" class=\"img-responsive\" />\n        </div>\n      </div>\n    </div>\n  </ion-content>\n</ion-content>\n", styles: [".show-img{display:grid;grid-template-columns:repeat(5,1fr);grid-gap:10px;gap:10px}.images-preview{height:300px;width:300px;object-fit:contain}.img-responsive{width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain}\n"] }]
+        }], ctorParameters: function () { return [{ type: i1.AngularFirestore }, { type: i2.AuthService }, { type: i3.AngularFireStorage }]; }, propDecorators: { position: [{
+                type: Input
+            }], mode: [{
+                type: Input
+            }], showImgApiOutput: [{
+                type: Output
+            }] } });
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2hvd2ltZy5jb21wb25lbnQuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi8uLi9zcmMvYXBwL2F1dGgvc2hvd2ltZy9zaG93aW1nLmNvbXBvbmVudC50cyIsIi4uLy4uLy4uLy4uLy4uLy4uL3NyYy9hcHAvYXV0aC9zaG93aW1nL3Nob3dpbWcuY29tcG9uZW50Lmh0bWwiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxFQUFFLFNBQVMsRUFBRSxZQUFZLEVBQUUsS0FBSyxFQUFVLE1BQU0sRUFBRSxNQUFNLGVBQWUsQ0FBQztBQUcvRSxPQUFPLEVBQUUsYUFBYSxFQUFVLE1BQU0saUJBQWlCLENBQUM7Ozs7OztBQVd4RCxNQUFNLE9BQU8sZ0JBQWdCO0lBTTNCLFlBQW9CLEVBQW9CLEVBQVUsR0FBZ0IsRUFBVSxPQUEyQjtRQUFuRixPQUFFLEdBQUYsRUFBRSxDQUFrQjtRQUFVLFFBQUcsR0FBSCxHQUFHLENBQWE7UUFBVSxZQUFPLEdBQVAsT0FBTyxDQUFvQjtRQUwvRixhQUFRLEdBQUcsY0FBYyxDQUFDO1FBQ2xDLFNBQUksR0FBRyxFQUFFLENBQUM7UUFDRCxhQUFRLEdBQUcsVUFBVSxDQUFDO1FBQ3RCLFNBQUksR0FBRyxNQUFNLENBQUM7UUFDYixxQkFBZ0IsR0FBRyxJQUFJLFlBQVksRUFBRSxDQUFDO0lBQzJELENBQUM7SUFFNUcsUUFBUTtRQUNOLElBQUksQ0FBQyxFQUFFLENBQUMsVUFBVSxDQUFDLFFBQVEsQ0FBQyxDQUFDLFlBQVksRUFBRSxDQUFDLFNBQVMsQ0FBQyxHQUFHLENBQUMsRUFBRTtZQUMxRCxJQUFJLENBQUMsSUFBSSxHQUFHLEdBQUcsQ0FBQyxHQUFHLENBQUMsR0FBRyxDQUFDLEVBQUU7Z0JBQ3hCLElBQUksR0FBRyxZQUFZLGFBQWEsRUFBRTtvQkFDaEMsT0FBTyxDQUFDLEdBQUcsQ0FBQyxHQUFHLENBQUMsR0FBRyxDQUFDLENBQUE7aUJBQ3JCO2dCQUNELE9BQU8sQ0FBQyxHQUFHLENBQUMsR0FBRyxDQUFDLENBQUE7Z0JBQ2hCLEdBQUcsQ0FBQTtZQUNMLENBQUMsQ0FBQyxDQUFDO1FBQ0wsQ0FBQyxDQUFDLENBQUM7SUFFTCxDQUFDOzs2R0FuQlUsZ0JBQWdCO2lHQUFoQixnQkFBZ0IseUpDZDdCLDhwQkFzQkE7MkZEUmEsZ0JBQWdCO2tCQUw1QixTQUFTOytCQUNFLGdCQUFnQjtrS0FPakIsUUFBUTtzQkFBaEIsS0FBSztnQkFDRyxJQUFJO3NCQUFaLEtBQUs7Z0JBQ0ksZ0JBQWdCO3NCQUF6QixNQUFNIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQ29tcG9uZW50LCBFdmVudEVtaXR0ZXIsIElucHV0LCBPbkluaXQsIE91dHB1dCB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuaW1wb3J0IHsgQW5ndWxhckZpcmVEYXRhYmFzZSB9IGZyb20gJ0Bhbmd1bGFyL2ZpcmUvY29tcGF0L2RhdGFiYXNlJztcbmltcG9ydCB7IEFuZ3VsYXJGaXJlU3RvcmFnZSB9IGZyb20gJ0Bhbmd1bGFyL2ZpcmUvY29tcGF0L3N0b3JhZ2UnO1xuaW1wb3J0IHsgTmF2aWdhdGlvbkVuZCwgUm91dGVyIH0gZnJvbSAnQGFuZ3VsYXIvcm91dGVyJztcbmltcG9ydCB7IE9ic2VydmFibGUgfSBmcm9tICdyeGpzJztcbmltcG9ydCB7IEF1dGhTZXJ2aWNlIH0gZnJvbSAnLi4vY29yZS9fc2VydmljZXMvYXV0aC5zZXJ2aWNlcyc7XG5pbXBvcnQgeyBGaWxlVXBsb2FkIH0gZnJvbSAnLi4vbW9kZWwvZmlsZS11cGxvYWQnO1xuaW1wb3J0IHsgZ2V0U3RvcmFnZSwgcmVmLCBsaXN0QWxsIH0gZnJvbSBcImZpcmViYXNlL3N0b3JhZ2VcIjtcbmltcG9ydCB7IEFuZ3VsYXJGaXJlc3RvcmUgfSBmcm9tICdAYW5ndWxhci9maXJlL2NvbXBhdC9maXJlc3RvcmUnO1xuQENvbXBvbmVudCh7XG4gIHNlbGVjdG9yOiAnc2hhcmVkLXNob3dpbWcnLFxuICB0ZW1wbGF0ZVVybDogJy4vc2hvd2ltZy5jb21wb25lbnQuaHRtbCcsXG4gIHN0eWxlVXJsczogWycuL3Nob3dpbWcuY29tcG9uZW50LnNjc3MnXSxcbn0pXG5leHBvcnQgY2xhc3MgU2hvd2ltZ0NvbXBvbmVudCBpbXBsZW1lbnRzIE9uSW5pdCB7XG4gIHByaXZhdGUgYmFzZVBhdGggPSAnL1Jvb21zSW1hZ2VzJztcbiAgZGF0ZSA9IFtdO1xuICBASW5wdXQoKSBwb3NpdGlvbiA9ICdmbG9hdGluZyc7XG4gIEBJbnB1dCgpIG1vZGUgPSBcIm1vZGVcIjtcbiAgQE91dHB1dCgpIHNob3dJbWdBcGlPdXRwdXQgPSBuZXcgRXZlbnRFbWl0dGVyKCk7XG4gIGNvbnN0cnVjdG9yKHByaXZhdGUgZGI6IEFuZ3VsYXJGaXJlc3RvcmUsIHByaXZhdGUgQXBpOiBBdXRoU2VydmljZSwgcHJpdmF0ZSBzdG9yYWdlOiBBbmd1bGFyRmlyZVN0b3JhZ2UpIHsgfVxuICB0dXRvcmlhbHNcbiAgbmdPbkluaXQoKSB7XG4gICAgdGhpcy5kYi5jb2xsZWN0aW9uKCdpbWFnZXMnKS52YWx1ZUNoYW5nZXMoKS5zdWJzY3JpYmUocmVzID0+IHtcbiAgICAgIHRoaXMuZGF0ZSA9IHJlcy5tYXAoZWxlID0+IHtcbiAgICAgICAgaWYgKGVsZSBpbnN0YW5jZW9mIE5hdmlnYXRpb25FbmQpIHtcbiAgICAgICAgICBjb25zb2xlLmxvZyhlbGUudXJsKVxuICAgICAgICB9XG4gICAgICAgIGNvbnNvbGUubG9nKHJlcylcbiAgICAgICAgZWxlXG4gICAgICB9KTtcbiAgICB9KTtcblxuICB9XG59XG4iLCI8aW9uLWhlYWRlciBbdHJhbnNsdWNlbnRdPVwidHJ1ZVwiPlxuICA8aW9uLXRvb2xiYXIgY29sb3I9XCJwcmltYXJ5XCI+XG4gICAgPGlvbi10aXRsZT5cbiAgICAgIE15IGhvbWUgY2FtZXJhXG4gICAgPC9pb24tdGl0bGU+XG4gIDwvaW9uLXRvb2xiYXI+XG48L2lvbi1oZWFkZXI+XG48aW9uLWNvbnRlbnQgW2Z1bGxzY3JlZW5dPVwidHJ1ZVwiPlxuICA8aW9uLWNvbnRlbnQgY2xhc3M9XCJpb24tcGFkZGluZ1wiPlxuICAgIDxkaXYgY2xhc3M9XCJwcmV2aWV3XCI+XG4gICAgICB0aGlzIGlzIHByZXZpZXcgYmVsb3dcbiAgICAgIDxkaXYgY2xhc3M9XCJzaG93LWltZ1wiPlxuICAgICAgICA8ZGl2IGNsYXNzPVwiaW1hZ2VzLXByZXZpZXdcIj5cbiAgICAgICAgICA8aW1nIHNyYz1cImh0dHBzOi8vdmlhLnBsYWNlaG9sZGVyLmNvbS81MDBcIiBjbGFzcz1cImltZy1yZXNwb25zaXZlXCIgLz5cbiAgICAgICAgPC9kaXY+XG4gICAgICAgIDxkaXYgY2xhc3M9XCJpbWFnZXMtcHJldmlld1wiPlxuICAgICAgICAgIDxpbWcgc3JjPVwiaHR0cHM6Ly92aWEucGxhY2Vob2xkZXIuY29tLzIwMFwiIGNsYXNzPVwiaW1nLXJlc3BvbnNpdmVcIiAvPlxuICAgICAgICA8L2Rpdj5cbiAgICAgIDwvZGl2PlxuICAgIDwvZGl2PlxuICA8L2lvbi1jb250ZW50PlxuPC9pb24tY29udGVudD5cbiJdfQ==
