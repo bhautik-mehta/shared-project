@@ -38,14 +38,17 @@ export class CamerahomeComponent implements OnInit {
             if (url) {
               this.fb = url;
             }
-            console.log(this.fb);
+            console.log('this.fb-------', this.fb);
           });
         })
       )
       .subscribe(url => {
         if (url) {
-          console.log(url);
-          const dbtask = this.db.collection('images').add({ url: url })
+          console.log('url------------', url);
+          const dbtask = this.db.collection('images').add({ url: 'this is basic' }).then(
+            success => console.log(success, 'successfully done')
+          ).catch(e => console.log(e, 'something wrong'));
+
         }
       });
   }
