@@ -11,7 +11,7 @@
       this is preview below
       <div class="show-img">
         <div class="images-preview" *ngFor="let items of date">
-          <img bind-src="items.url" class="img-responsive" alt="{{items.url}}" />
+          <img src={{items.url}} class="img-responsive" alt="{{items.url}}" />
         </div>
       </div>
     </div>
