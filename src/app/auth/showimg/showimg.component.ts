@@ -26,8 +26,6 @@ export class ShowimgComponent implements OnInit {
         if (ele instanceof NavigationEnd) {
           console.log(ele.url)
         }
-        console.log(res)
-        ele
       });
     });
 
