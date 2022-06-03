@@ -4,6 +4,8 @@ import { AngularFireStorage } from "@angular/fire/compat/storage";
 import { AuthService } from '../core/_services/auth.services';
 import { map, finalize } from "rxjs/operators";
 import { Observable } from "rxjs";
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
+import { FileUpload } from '../model/file-upload';
 @Component({
   selector: 'shared-camerahome',
   templateUrl: './camerahome.component.html',
@@ -13,12 +15,12 @@ export class CamerahomeComponent implements OnInit {
   @Input() position = 'floating';
   @Input() mode = "mode";
   @Output() cameraHomeApiOutput = new EventEmitter();
-
+  private basePath = '/RoomsImages';
   title = "cloudsSorage";
   selectedFile: File = null;
   fb;
   downloadURL: Observable<string>;
-  constructor(private Api: AuthService, private storage: AngularFireStorage) { }
+  constructor(private db: AngularFireDatabase, private Api: AuthService, private storage: AngularFireStorage) { }
   ngOnInit() { }
   onFileSelected(event) {
     var n = Date.now();
@@ -46,5 +48,12 @@ export class CamerahomeComponent implements OnInit {
       });
   }
 
-
+  getFiles(numberItems): AngularFireList<FileUpload> {
+    console.log('number items----', numberItems);
+    console.log('number items----', this.basePath);
+    console.log('final ans', this.db.list(this.basePath, ref =>
+      ref.limitToLast(numberItems)));
+    return this.db.list(this.basePath, ref =>
+      ref.limitToLast(numberItems));
+  }
 }

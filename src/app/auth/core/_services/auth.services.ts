@@ -31,59 +31,6 @@ export class AuthService {
     return this.ngFireAuth.signOut();
   }
 
-  async getUserProfile() {
-    const user = await this.ngFireAuth.currentUser;
-    const userDocRef = doc(this.firestore, `users/${user.uid}`);
-    console.log(userDocRef);
-
-    return docData(userDocRef);
-  }
-  async uploadImage(cameraFile: Photo) {
-    const user = await this.ngFireAuth.currentUser;
-    console.log(user, 'user-------');
-
-    const path = `uploads/${user.uid}/profile. png`;
-    const storageRef = ref(this.storage, path);
-    try {
-      uploadString(storageRef, cameraFile.base64String, 'base64');
-
-      const imageUrl = getDownloadURL(storageRef);
-      const userDocRef = doc(this.firestore, `users/${user.uid}`);
-
-      setDoc(userDocRef, {
-        imageUrl,
-      });
-      return true;
-    } catch (e) {
-      return null;
-    }
-
-  }
 
 
 }
-
-function docData(userDocRef: any) {
-  throw new Error("Function not implemented.");
-}
-
-function ref(storage: AngularFireStorage, path: string) {
-  throw new Error("Function not implemented.");
-}
-
-function uploadString(storageRef: any, base64String: string, arg2: string) {
-  throw new Error("Function not implemented.");
-}
-
-function getDownloadURL(storageRef: any) {
-  throw new Error("Function not implemented.");
-}
-
-function setDoc(userDocRef: any, arg1: { imageUrl: any; }) {
-  throw new Error("Function not implemented.");
-}
-
-function doc(firestore: AngularFirestore, arg1: string) {
-  throw new Error("Function not implemented.");
-}
-

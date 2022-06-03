@@ -14,7 +14,7 @@ export declare class ShowimgComponent implements OnInit {
     showImgApiOutput: EventEmitter<any>;
     constructor(db: AngularFireDatabase, Api: AuthService, storage: AngularFireStorage);
     ngOnInit(): void;
-    getImages(fileUpload: FileUpload): import("rxjs").Observable<number>;
+    getImages(fileUpload: FileUpload): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<ShowimgComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<ShowimgComponent, "shared-showimg", never, { "position": "position"; "mode": "mode"; }, { "showImgApiOutput": "showImgApiOutput"; }, never, never>;
 }
