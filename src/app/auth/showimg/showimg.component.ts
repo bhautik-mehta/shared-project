@@ -23,5 +23,7 @@ export class ShowimgComponent implements OnInit {
     this.db.collection('images').valueChanges().subscribe(
       res => console.log(res)
     );
+    console.log('hello');
+
   }
 }
