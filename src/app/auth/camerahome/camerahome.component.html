@@ -11,8 +11,12 @@
       this is camerahome works!
 
       <div class="camera">
-        <input type="file" id="file" #userPhoto (change)="onFileSelected($event)" name="image" autocomplete="off" />
+        <!-- <input type="file" id="file" #userPhoto (change)="onFileSelected($event)" name="image" autocomplete="off" /> -->
         <!-- <ion-button [mode]="mode" expand="block" color="primary" (click)="expression")></ion-button> -->
+        <div class="file-upload" (click)="changeImage()">
+          <!-- <img [src]="" /> -->
+        </div>
+
       </div>
     </div>
   </ion-content>

@@ -14,7 +14,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-
+import { Camera } from '@awesome-cordova-plugins/camera/ngx';
 @NgModule({
   declarations: [
     AppComponent
@@ -32,6 +32,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
     provideStorage(() => getStorage())
   ],
   providers: [
+    Camera,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [
